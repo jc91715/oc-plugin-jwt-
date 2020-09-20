@@ -100,7 +100,7 @@ abstract class Enum implements EnumContract
 
     public static function getLocalizationKey(): string
     {
-        return config('jcc.jwt::enum.localization.key').'.'.static::class;
+        return "jcc.jwt::".config('jcc.jwt::enum.localization.key').'.'.static::class;
     }
 
     protected static function getFriendlyKeyName(string $key): string
