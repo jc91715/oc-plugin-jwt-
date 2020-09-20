@@ -86,7 +86,7 @@ abstract class Enum implements EnumContract
         if (static::isLocalizable()) {
             $localizedStringKey = static::getLocalizationKey().'.'.$value;
             if (Lang::has($localizedStringKey)) {
-                return __($localizedStringKey);
+                return Lang::get($localizedStringKey);
             }
         }
 
