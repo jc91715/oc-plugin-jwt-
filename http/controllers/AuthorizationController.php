@@ -1,4 +1,4 @@
-<?php namespace Jcc\Jwt\Controllers\Api;
+<?php namespace Jcc\Jwt\Http\Controllers;
 
 
 use Illuminate\Http\Request;

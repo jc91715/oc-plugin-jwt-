@@ -1,6 +1,6 @@
 <?php
 
-namespace Jcc\Jwt\Controllers\Api;
+namespace Jcc\Jwt\Http\Controllers;
 
 use Illuminate\Routing\Controller as BaseController;
 use Jcc\Jwt\Support\Traits\ResponseTrait;
