@@ -8,6 +8,7 @@ use RainLab\User\Models\User as BaseUser;
 class User extends BaseUser implements JWTSubject
 {
     public $implement = [];
+
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *
@@ -28,7 +29,10 @@ class User extends BaseUser implements JWTSubject
         return [];
     }
 
-
+    public function isSuperAdmin()
+    {
+        return $this->is_superuser;
+    }
 
 
 }

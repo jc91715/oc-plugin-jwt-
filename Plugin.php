@@ -6,14 +6,16 @@ use System\Classes\PluginBase;
 use App;
 use Tymon\JWTAuth\JWTGuard;
 use Illuminate\Contracts\Debug\ExceptionHandler;
+
 /**
  * jwt Plugin Information File
  */
 class Plugin extends PluginBase
 {
     public $middlewareAliases = [
-        'api.jwt.refresh' => \Jcc\Jwt\Middleware\RefreshTokenMiddleware::class
+        'api.jwt.refresh' => \Jcc\Jwt\Middleware\RefreshTokenMiddleware::class,
     ];
+
     /**
      * Returns information about this plugin.
      *
@@ -37,7 +39,7 @@ class Plugin extends PluginBase
     public function register()
     {
         //用auth()函数 可以用auth('api')
-        $this->app->singleton(\Illuminate\Contracts\Auth\Factory::class, function($app){
+        $this->app->singleton(\Illuminate\Contracts\Auth\Factory::class, function ($app) {
             return app('auth');//返回单例避免没有 extend('jwt')
         });
 //
@@ -47,9 +49,9 @@ class Plugin extends PluginBase
 //        $facade->alias('JWTAuth', '\Tymon\JWTAuth\Facades\JWTAuth');
 //        $facade->alias('JWTFactory', '\Tymon\JWTAuth\Facades\JWTFactory');
 //
-        App::singleton('auth', function ($app) {
-            return new \Illuminate\Auth\AuthManager($app);
-        });
+//        App::singleton('auth', function ($app) {
+//            return new \Illuminate\Auth\AuthManager($app);
+//        });
 
 
         $this->aliasMiddleware();
@@ -75,7 +77,7 @@ class Plugin extends PluginBase
 
             return $guard;
         });
-        if(request()->header('NEED_LARAVEL_HANDLER')){
+        if (request()->header('NEED_LARAVEL_HANDLER')) {
             $this->app->bind(
                 ExceptionHandler::class,
                 \Jcc\Jwt\Exceptions\LaravelHandler::class
@@ -109,7 +111,7 @@ class Plugin extends PluginBase
 
         return [
             'jcc.jwt.some_permission' => [
-                'tab' => 'jwt',
+                'tab'   => 'jwt',
                 'label' => 'Some permission'
             ],
         ];
